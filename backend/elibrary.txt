@@ -1,0 +1,23 @@
+create table buku(
+  buku_id serial primary key,
+  judul varchar(50),
+  tahun_terbit varchar(50),
+  pengarang varchar(50)
+);
+
+create table person(
+  person_id serial primary key,
+  nama varchar(50)
+);
+
+create table peminjaman(
+  peminjaman_id serial primary key,
+  person_id integer,
+  buku_id integer,
+  nama varchar(50),  
+  judul varchar(50),
+  tanggal_peminjaman timestamp,
+  tanggal_pengembalian timestamp,
+  foreign key (person_id) references person (person_id),
+  foreign key (buku_id) references buku (buku_id)
+);
